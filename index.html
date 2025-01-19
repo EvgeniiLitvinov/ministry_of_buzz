@@ -11,16 +11,25 @@
     
     <header class="header">
         <div class="container heading__container">
+            <button class="header__burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo"><a href="#!"><img src="./img/logo.svg" alt="logo"></a></div>
-            <div class="header__nav">
-                <ul>
-                    <li><a href="#!">Расписание</a></li>
-                    <li><a href="#!">О нас</a></li>
-                    <li><a href="#!">Отзывы</a></li>
-                    <li><a href="#!">F.A.Q.</a></li>
-                </ul>
+
+            <div class="header__nav-all">
+                <div class="header__nav">
+                    <ul>
+                        <li><a href="#!">Расписание</a></li>
+                        <li><a href="#!">О нас</a></li>
+                        <li><a href="#!">Отзывы</a></li>
+                        <li><a href="#!">F.A.Q.</a></li>
+                    </ul>
+                </div>
+                <h5><a href="#!">Контакты</a></h5>
             </div>
-            <h5><a href="#!">Контакты</a></h5>
+
         </div>
     </header>
 
@@ -30,8 +39,21 @@
             <div class="container">
                 <h2 class="welcome__heading">ПРИВЕТ,<br> ЭТО МИНИСТЕРСТВО КАЙФА!</h2>
                 <p class="welcome__text">Туры для тех, кто хочет почувствовать себя настоящим путешественником! <br> Наши поездки — это рок-н-ролл от мира путешествий, которые наполняют жизнь свободой, кайфом и впечатлениями. Туры, походы, круизы, регаты и экспедиции – в нашем туристическом меню исключительно главные блюда, только взгляни!</p>
-                <button class="welcome__button">Стать кайфологом!</button>
+                <button class="welcome__button" data-modal-id="open-modal">Стать кайфологом!</button>
             </div>
+
+            <div class="modal-overlay" id="modal-overlay">
+                <div class="main-modal" id="main-modal">
+                    <form>
+                        <button type="button-close" class="button-close" id="modal-close">&times;</button>
+                        <input type="text" name="name" placeholder="Введите ваше имя" required>
+                        <input type="tel" name="phone" placeholder="Введите ваш номер телефона" required>
+                        <input type="email" name="email" placeholder="Введите ваш Email" required>
+                        <button class="main-btn-input" type="submit">Стать кайфологом</button>
+                    </form>
+                </div>
+            </div>
+
         </section>
     </main>
 
@@ -112,7 +134,7 @@
                     </div>
                     <h4 class="title">ИНДИВИДУАЛЬНЫЕ ТУРЫ</h4>
                     <h5 class="date">делаем путешествия под запрос</h5>
-                    <button class="details-btn" data-modal-id="modal-6">Подробнее</button>
+                    <button class="details-btn" data-modal-id="modal-4">Подробнее</button>
                 </div>
 
                 <div class="card hidden">
@@ -122,7 +144,7 @@
                     </div>
                     <h4 class="title">ИНДИВИДУАЛЬНЫЕ ТУРЫ</h4>
                     <h5 class="date">делаем путешествия под запрос</h5>
-                    <button class="details-btn" data-modal-id="modal-6">Подробнее</button>
+                    <button class="details-btn" data-modal-id="modal-5">Подробнее</button>
                 </div>
 
                 <div class="card hidden">
@@ -320,6 +342,154 @@
         </div>
         </div>
     </section>
+
+    <section class="questions">
+        <div class="container questions-wrapper">
+            <div class="left-questions-content">
+                <h3>СКОРЕЕ ВСЕГО У ТЕБЯ ЕСТЬ ОДИН ИЗ ЭТИХ ВОПРОСОВ. <span>ОТВЕЧАЕМ</span></h3>
+
+                <div class="accordion first-accordion">
+                    <div class="accordion-item first-item">
+                      <div class="accordion-header">
+                        <span>Как забронировать место?</span>
+                        <div class="cross"></div>
+                      </div>
+                      <div class="accordion-content">
+                        Забронировать место можно написав или позвонив нам одним из способов, указанных во вкладке контакты. Бронирование происходит по предоплате, сумма предоплаты обычно составляет 30%, но может быть и больше. Остаток вносится в первый день тура при личной встрече. После оплаты мы добавляем тебя в чат и даем всю необходимую информацию по поездке, помогаем найти билеты на самолет и подобрать снаряжение.
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <span>Сколько человек в группе?</span>
+                        <div class="cross"></div>
+                      </div>
+                      <div class="accordion-content">
+                        Обычно в каждом туре у нас от 5 до 12 участников. Только в несколько туров мы готовы позвать больше.
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <span>Что включено в стоимость?</span>
+                        <div class="cross"></div>
+                      </div>
+                      <div class="accordion-content">
+                        Стандартно включены: все переезды по маршруту путешествия, проживание, все активности, билеты в платные локации и пропуска в заповедники\погранзоны и т.п, услуги гидов. Часто включены завтраки и обеды во время экскурсий. Но в нашем меню есть и туры где включено все, например, Териберка или Карелия.
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <span>Откуда стартуем в тур?</span>
+                        <div class="cross"></div>
+                      </div>
+                      <div class="accordion-content">
+                        Наши туры зачастую начинаются в регионе, который мы собираемся изучить. То есть вам самостоятельно нужно добраться к месту старта, это всегда большой город, областной центр, где обязательно есть аэропорт и/или вокзал. В него добираются все самостоятельно, зачастую участники тура кооперируются в чате поездки и летят/едут вместе. 
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <span>Какие авиабилеты купить?</span>
+                        <div class="cross"></div>
+                      </div>
+                      <div class="accordion-content">
+                        Мы поможем подобрать вам подходящие авиабилеты, найдем удобные пересадки если вы летите не из Москвы. Для каждого тура есть свой набор подходящих рейсов, если они не указаны в программе, значит мы подберём вам их индивидуально. 
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <div class="accordion-header">
+                        <span>А одному можно поехать?</span>
+                        <div class="cross"></div>
+                      </div>
+                      <div class="accordion-content">
+                        Конечно, разве это повод сидеть дома? К нам постоянно приезжают одинокие путешественники, наши поездки как раз созданы для того, чтобы собрать всех воедино и устроить праздник. Если хочешь жить один, то в наших турах возможно одиночное проживание за дополнительную плату. Одно я знаю точно, обратно ты уедешь со знанием, что с нами ты один не останешься!
+                      </div>
+                    </div>
+                </div>
+            
+
+            </div>
+
+            <div><img src="./img/questions.jpg" alt=""></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-contacts">
+
+                <div class="contact__container">
+
+                    <h5>Контакты:</h5>
+
+                    <a href="+79081412552">
+                        <div class="footer-contact__item">
+                            <img src="./img/phone.svg" alt="phone">
+                            <p>+7 908 141 2552</p>
+                        </div>
+                    </a>
+
+                    <a href="+79081412552">
+                        <div class="footer-contact__item">
+                            <img src="./img/telegram.svg" alt="phone">
+                            <p>@the_ministr_kayfa</p>
+                        </div>
+                    </a>
+
+                    <a href="+79081412552">
+                        <div class="footer-contact__item">
+                            <img src="./img/watsapp.svg" alt="phone">
+                            <p>+7 908 141 2552</p>
+                        </div>
+                    </a>
+
+                    <a href="+79081412552">
+                        <div class="footer-contact__item">
+                            <img src="./img/email.svg" alt="phone">
+                            <p>tudasudavrn@gmail.com</p>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="contact__container">
+
+                    <h5>Подпишись на нас:</h5>
+
+                    <a href="+79081412552">
+                        <div class="footer-contact__item">
+                            <img src="./img/vk.svg" alt="phone">
+                            <p>ministerstvo_kaifa_rf</p>
+                        </div>
+                    </a>
+
+                    <a href="+79081412552">
+                        <div class="footer-contact__item">
+                            <img src="./img/instagram.svg" alt="phone">
+                            <p>ministerstvo_kaifa_rf</p>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="contact__container">
+
+                    <h5>Дизайн и разработка:</h5>
+
+                    <a href="+79081412552">
+                        <div class="footer-contact__item">
+                            <img src="./img/behance.svg" alt="phone">
+                            <p>behance.net/litvinov</p>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="footer-line"></div>
+
+            <p class="footer-title">© 2025 Министерство Кайфа. Все права защищены.</p>
+
+        </div>
+    </footer>
 
 
 

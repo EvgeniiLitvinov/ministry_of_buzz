@@ -13,10 +13,25 @@ document.getElementById('load-more').addEventListener('click', function () {
     }
 });
 
+//Смена цвета при скролле
+
+document.addEventListener("scroll", function () {
+    const header = document.querySelector(".header");
+    const scrollY = window.scrollY;
+  
+    // Условие: изменить стиль при прокрутке вниз
+    if (scrollY > 125) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+
 // МОДАЛЬНОЕ ОКНО
 
 const openBtnModals = document.querySelectorAll('.card')
 const modals = document.querySelectorAll('.modal')
+
 
 openBtnModals.forEach(card=> {
     card.addEventListener('click', function (event) {
@@ -58,6 +73,30 @@ modals.forEach(modal => {
     })
     
 })
+
+// Главное модальное окно
+
+const openModal = document.querySelector('.welcome__button');
+const modalOverlay = document.getElementById('modal-overlay');
+const modal = document.getElementById('main-modal');
+const closeModal = document.getElementById('modal-close');
+
+// Open Modal
+openModal.addEventListener('click', () => {
+    setTimeout(() => modalOverlay.classList.add('modal-show'), 50);
+    setTimeout(() => modal.classList.add('show'), 50); // Add delay for smooth animation
+});
+
+// Close Modal
+const close = () => {
+    modal.classList.remove('show');
+    modalOverlay.classList.remove('modal-show')
+};
+
+closeModal.addEventListener('click', close);
+modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) close();
+});
 
 
 // Слайдер
@@ -110,3 +149,43 @@ rightArrow.addEventListener('click', () => {
 
 // Инициализация
 updateArrows();
+
+
+// АККОРДЕОН 
+
+const headers = document.querySelectorAll('.accordion-header');
+
+headers.forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    const cross = header.querySelector('.cross');
+
+    // Если текущий элемент уже открыт, просто закрываем его
+    if (content.classList.contains('open')) {
+      content.classList.remove('open');
+      cross.classList.remove('rotated');
+      return;
+    }
+
+    // Закрываем все остальные элементы
+    document.querySelectorAll('.accordion-content').forEach(item => {
+      item.classList.remove('open');
+    });
+    document.querySelectorAll('.cross').forEach(crossItem => {
+      crossItem.classList.remove('rotated');
+    });
+
+    // Открываем текущий элемент
+    content.classList.add('open');
+    cross.classList.add('rotated');
+  });
+});
+
+// БУРГЕР 
+
+const burgerBtn = document.querySelector('.header__burger-btn')
+const openBurger = document.querySelector('.header')
+
+burgerBtn.addEventListener('click', function() {
+    openBurger.classList.toggle('open')
+})
