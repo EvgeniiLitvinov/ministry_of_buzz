@@ -185,7 +185,9 @@ headers.forEach(header => {
 
 const burgerBtn = document.querySelector('.header__burger-btn')
 const openBurger = document.querySelector('.header')
+const overlay = document.getElementById('overlay')
 
 burgerBtn.addEventListener('click', function() {
     openBurger.classList.toggle('open')
+    overlay.classList.toggle('active')
 })

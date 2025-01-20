@@ -923,8 +923,29 @@ button.details-btn:hover {
 }
 
 .header__nav-all {
+    z-index: 1;
     gap: 200px;
     display: flex;
+}
+
+/* --- ТЕНЬ ПРИ НАЖАТИИ НА БУРГЕР --- */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 @media (max-width: 970px) {
@@ -934,15 +955,15 @@ button.details-btn:hover {
     }
 
     .header__nav-all {
-        left: -350px;
-        width: 350px;
+        right: -350px;
+        width: 250px;
         
-        margin-top: 200px;
+        margin-top: 490px;
         padding: 150px 20px 20px 20px;
         display: block;
-        position: absolute;
+        position: fixed;
 
-        background-color: #9b2573;
+        background-color: rgb(0, 0, 0);
 
         transition: transform .5s;
     }
@@ -960,19 +981,38 @@ button.details-btn:hover {
 
     .header__nav-all h5 a {
         font-size: 21px;
+        margin-bottom: 200px;
         display: block;
         padding-top: 10px;
         padding-left: 10px;
     }
 
     .header.open .header__nav-all {
-        transform: translateX(350px);
+        transform: translateX(-350px);
     }
 
     .header.scrolled a {
         color: #fff;
         font-size: 21px;
         font-weight: 500;
+    }
+
+    /* ? */
+
+    .questions-wrapper img {
+        display: none;
+    }
+
+    .persons-container p {
+        display: none;
+    }
+
+    .personal-container {
+        width: 500px;
+    }
+
+    .right-arrow {
+        display: none;
     }
 
 }
