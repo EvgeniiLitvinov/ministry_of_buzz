@@ -377,6 +377,7 @@ button.details-btn:hover {
 
 .modal__content-wrapper {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
@@ -655,6 +656,7 @@ button.details-btn:hover {
 }
 
 .text-content-item {
+    max-width: 700px;
     padding-top: 50px;
     padding-bottom: 25px;
     
@@ -951,6 +953,16 @@ button.details-btn:hover {
 }
 
 @media (max-width: 970px) {
+
+    .header__nav ul li a::after, 
+    .heading__container h5 a::after {
+        content: none; /* Убираем линию под текстом */
+    }
+
+    .header.scrolled a::after, .heading__container h5 a::after {
+        content: none;
+    }
+
     .header__burger-btn {
         display: block;
         z-index: 2;
@@ -1063,6 +1075,16 @@ button.details-btn:hover {
         padding-bottom: 40px;
     }
 
+    .personal-container {
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .modal__content-wrapper {
+        justify-content: center;
+        align-items: center;
+    }
+
     .reviews h3 {
         padding: 40px 0;
         font-size: 30px;
@@ -1070,13 +1092,24 @@ button.details-btn:hover {
     }
 
     .text-content-item {
-        font-size: 10px;
+        font-size: 16px;
+        max-width: 100%;
         padding-top: 20px;
     }
 
     .review-photo {
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 380px;
+    }
+
+    .review__photo-container {
+        display: grid;
+        place-items: center;
+        width: 100%;
+    }
+
+    .reviews-text-content {
+        order: 1;
     }
 
     .reviews-container {
@@ -1088,7 +1121,20 @@ button.details-btn:hover {
     }
 
     .questions-wrapper h3 {
-        
+        font-size: 30px;
+    }
+
+    .questions-wrapper {
+        gap: 0;
+    }
+
+    .accordion {
+        width: 100%;
+
+    }
+
+    .accordion-content.open {
+        max-height: 250px;
     }
 
     @media (max-width: 650px) {

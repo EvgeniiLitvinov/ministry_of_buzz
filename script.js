@@ -186,6 +186,14 @@ headers.forEach(header => {
 const burgerBtn = document.querySelector('.header__burger-btn')
 const openBurger = document.querySelector('.header')
 const overlay = document.getElementById('overlay')
+const navBtnBurger = document.querySelectorAll('#nav__btn-burger')
+
+navBtnBurger.forEach(nav => {
+    nav.addEventListener('click', () => {
+        openBurger.classList.remove('open')
+        overlay.classList.remove('active')
+    })
+})
 
 burgerBtn.addEventListener('click', function() {
     openBurger.classList.toggle('open')
@@ -202,12 +210,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       const targetElement = document.querySelector(targetId);
   
       if (targetElement) {
-        const headerHeight = document.querySelector('.header__nav-all').getBoundingClientRect().height; // Высота шапки
+        // Прокрутка к секции без учёта высоты шапки
         const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - headerHeight;
   
         window.scrollTo({
-          top: offsetPosition - -27, // Сдвигаем на 1px вверх для точности
+          top: elementPosition,
           behavior: 'smooth',
         });
       }
