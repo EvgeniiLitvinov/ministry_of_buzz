@@ -828,7 +828,9 @@ button.details-btn:hover {
     padding-top: 30px;
     padding-bottom: 50px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 140px;
+    justify-content: center;
 }
 
 .contact__container h5 {
@@ -958,7 +960,7 @@ button.details-btn:hover {
         right: -350px;
         width: 250px;
         
-        margin-top: 490px;
+        margin-top: 690px;
         padding: 150px 20px 20px 20px;
         display: block;
         position: fixed;
@@ -981,7 +983,7 @@ button.details-btn:hover {
 
     .header__nav-all h5 a {
         font-size: 21px;
-        margin-bottom: 200px;
+        margin-bottom: 400px;
         display: block;
         padding-top: 10px;
         padding-left: 10px;
@@ -997,21 +999,107 @@ button.details-btn:hover {
         font-weight: 500;
     }
 
-    /* ? */
+    .welcome__heading {
+        font-size: 28px;
+        line-height: 1.43;
+    }
 
-    .questions-wrapper img {
-        display: none;
+    .welcome__text {
+        font-size: 16px;
+        line-height: 1.23;
+    }
+
+    .welcome__button {
+        padding: 8px 24px;
+        font-size: 18px;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .schedule h3 {
+        font-size: 30px;
+        padding: 40px 0;
+    }
+
+    .about-us h3 {
+        padding: 80px 0px 10px 0px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .about-us p {
+        padding-top: 10px;
+        font-size: 16px;
+        line-height: 1.33;
+    }
+
+    .about-us a {
+        padding: 8px 24px;
+        font-size: 16px;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .ministr {
+        padding-top: 50px;
     }
 
     .persons-container p {
+        font-size: 16px;
+        line-height: 1.2;
+        width: 100%;
+    }
+
+    .persons-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .persons-container img {
+        order: -1;
+    }
+
+    .persons h3 {
+        padding-bottom: 40px;
+    }
+
+    .reviews h3 {
+        padding: 40px 0;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .text-content-item {
+        font-size: 10px;
+        padding-top: 20px;
+    }
+
+    .review-photo {
+        width: 300px;
+        height: 300px;
+    }
+
+    .reviews-container {
+        padding-bottom: 40px;
+    }
+
+    .arrow {
         display: none;
     }
 
-    .personal-container {
-        width: 500px;
+    @media (max-width: 650px) {
+        .footer-contacts {
+            gap: 70px;
+        }
+
+        .email {
+            font-size: 15px !important;
+        }
     }
 
-    .right-arrow {
+    /* ? */
+
+    .questions-wrapper img {
         display: none;
     }
 
