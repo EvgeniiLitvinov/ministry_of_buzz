@@ -80,23 +80,55 @@ const openModal = document.querySelector('.welcome__button');
 const modalOverlay = document.getElementById('modal-overlay');
 const modal = document.getElementById('main-modal');
 const closeModal = document.getElementById('modal-close');
+const form = modal.querySelector('form'); // Найдём форму внутри модального окна
+const submitButton = form?.querySelector('[type="submit"]'); // Найдём кнопку отправки
 
-// Open Modal
+// Открытие модального окна
 openModal.addEventListener('click', () => {
     setTimeout(() => modalOverlay.classList.add('modal-show'), 50);
-    setTimeout(() => modal.classList.add('show'), 50); // Add delay for smooth animation
+    setTimeout(() => modal.classList.add('show'), 50); // Добавляем задержку для анимации
 });
 
-// Close Modal
+// Функция закрытия модального окна (всегда закрывает, без проверки формы)
 const close = () => {
+    // Убираем фокус с активного элемента
+    document.activeElement.blur();
+
+    // Закрываем модальное окно
     modal.classList.remove('show');
-    modalOverlay.classList.remove('modal-show')
+    modalOverlay.classList.remove('modal-show');
 };
 
-closeModal.addEventListener('click', close);
+// Закрытие по клику на крестик (и предотвращение всплытия события)
+closeModal.addEventListener('click', (e) => {
+    e.stopPropagation(); // Предотвращаем лишнюю обработку событий
+    close();
+});
+
+// Закрытие при клике на оверлей
 modalOverlay.addEventListener('click', (e) => {
     if (e.target === modalOverlay) close();
 });
+
+// Закрытие по клавише Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+});
+
+// Обработка отправки формы (если форма не заполнена — не закрываем)
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // Отмена стандартной отправки
+
+        if (form.checkValidity()) {
+            console.log('Форма успешно отправлена!'); // Тут можно добавить AJAX-запрос
+            close(); // Закрываем модальное окно после успешной отправки
+        } else {
+            console.log('Форма заполнена не полностью!'); // Уведомление в консоль
+            form.reportValidity(); // Включает стандартное отображение ошибок
+        }
+    });
+}
 
 
 // Слайдер
@@ -104,28 +136,23 @@ modalOverlay.addEventListener('click', (e) => {
 const personalContainers = document.querySelectorAll('.personal-container');
 const leftArrow = document.getElementById('leftArrow');
 const rightArrow = document.getElementById('rightArrow');
+const reviewsContainer = document.querySelector('.reviews-container');
 
 let currentIndex = 0;
+let isDragging = false;
+let startX = 0;
 
 // Функция обновления состояния стрелок
 function updateArrows() {
-    if (currentIndex === 0) {
-        leftArrow.classList.add('disabled'); // Скрыть левую стрелку на первом слайде
-    } else {
-        leftArrow.classList.remove('disabled');
-    }
-
-    if (currentIndex === personalContainers.length - 1) {
-        rightArrow.classList.add('disabled'); // Скрыть правую стрелку на последнем слайде
-    } else {
-        rightArrow.classList.remove('disabled');
-    }
+    leftArrow.classList.toggle('disabled', currentIndex === 0);
+    rightArrow.classList.toggle('disabled', currentIndex === personalContainers.length - 1);
 }
 
-// Функция перемещения слайдов
-function moveSlider() {
-    const offset = -currentIndex * 100; // Смещение на ширину контейнера
+// Функция плавного перемещения слайдов
+function moveSlider(smooth = true) {
+    const offset = -currentIndex * 100;
     personalContainers.forEach((container) => {
+        container.style.transition = smooth ? 'transform 0.6s ease-out' : 'none'; // Убираем анимацию при свайпе
         container.style.transform = `translateX(${offset}%)`;
     });
 }
@@ -145,6 +172,38 @@ rightArrow.addEventListener('click', () => {
         moveSlider();
         updateArrows();
     }
+});
+
+// === 🛠 ДОБАВЛЕНИЕ ПЛАВНОГО СКРОЛЛА ДЛЯ МОБИЛЬНЫХ ===
+reviewsContainer.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+});
+
+reviewsContainer.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const diffX = startX - e.touches[0].clientX;
+    const offset = -currentIndex * 100 - (diffX / window.innerWidth) * 100;
+
+    personalContainers.forEach((container) => {
+        container.style.transition = 'none'; // Убираем анимацию во время свайпа
+        container.style.transform = `translateX(${offset}%)`;
+    });
+});
+
+reviewsContainer.addEventListener('touchend', (e) => {
+    isDragging = false;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
+
+    if (diffX > 50 && currentIndex < personalContainers.length - 1) {
+        currentIndex++;
+    } else if (diffX < -50 && currentIndex > 0) {
+        currentIndex--;
+    }
+
+    moveSlider(true); // Включаем плавную анимацию
+    updateArrows();
 });
 
 // Инициализация
@@ -187,6 +246,12 @@ const burgerBtn = document.querySelector('.header__burger-btn')
 const openBurger = document.querySelector('.header')
 const overlay = document.getElementById('overlay')
 const navBtnBurger = document.querySelectorAll('#nav__btn-burger')
+const welcomeBtn = document.querySelector('.welcome__button')
+
+welcomeBtn.addEventListener('click', () => {
+    openBurger.classList.remove('open')
+    overlay.classList.remove('active')
+})
 
 navBtnBurger.forEach(nav => {
     nav.addEventListener('click', () => {

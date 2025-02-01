@@ -124,22 +124,45 @@ body {
 }
 .welcome__text {
     padding-top: 15px;
+    margin-bottom: 50px;
 
     font-size: 18px;
     font-weight: 500;
     line-height: 27px;
 }
 
-.welcome__button {
-    margin-top: 50px;
-    padding: 15px 37px;
-
+.main-btn {
+    padding: 8px 37px;
     border-radius: 30px;
     border: 1px solid rgb(249, 178, 51);
     background: rgb(249, 178, 51);
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
+    transition: 0.3s ease;
+    color: #fff;
+}
+
+.main-btn:hover {
+    background-color: rgba(0, 123, 255, 0.5);
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.main-btn:active {
+    background-color: rgb(249, 178, 51);
+}
+
+.welcome__button {
+    display: flex;
+    padding: 6px 20px;
+
+    border-radius: 30px;
+    border: 1px solid rgb(249, 178, 51);
+    background: rgb(249, 178, 51);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #fff;
 
     transition: 0.3s ease;
 }
@@ -164,7 +187,7 @@ body {
     padding-bottom: 6px;
 
     color: rgb(68, 68, 68);
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     text-align: left;
 }
@@ -928,7 +951,8 @@ button.details-btn:hover {
 
 .header__nav-all {
     z-index: 1;
-    gap: 200px;
+    gap: 60px;
+    align-items: center;
     display: flex;
 }
 
@@ -952,7 +976,7 @@ button.details-btn:hover {
     visibility: visible;
 }
 
-@media (max-width: 970px) {
+@media (max-width: 1000px) {
 
     .header__nav ul li a::after, 
     .heading__container h5 a::after {
@@ -964,15 +988,25 @@ button.details-btn:hover {
     }
 
     .header__burger-btn {
+        order: 4;
         display: block;
         z-index: 2;
+    }
+
+    .welcome__button {
+        display: block;
+        order: 3;
+        margin-top: 40px;
+        margin-bottom: 90px;
+        font-size: 16px;
+        padding: 8px 12px;
     }
 
     .header__nav-all {
         right: -350px;
         width: 250px;
         
-        margin-top: 690px;
+        margin-top: 480px;
         padding: 150px 20px 20px 20px;
         display: block;
         position: fixed;
@@ -1016,16 +1050,14 @@ button.details-btn:hover {
         line-height: 1.43;
     }
 
+    .main-btn {
+        padding: 8px 37px;
+        font-weight: 500;
+    }
+
     .welcome__text {
         font-size: 16px;
         line-height: 1.23;
-    }
-
-    .welcome__button {
-        padding: 8px 24px;
-        font-size: 18px;
-        font-weight: 500;
-        font-size: 18px;
     }
 
     .schedule h3 {
