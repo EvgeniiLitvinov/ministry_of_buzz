@@ -978,6 +978,12 @@ button.details-btn:hover {
 
 @media (max-width: 1000px) {
 
+    .modal__close-btn {
+        padding: 0;
+        right: 2px;
+        top: 5px;
+    }
+
     .header__nav ul li a::after, 
     .heading__container h5 a::after {
         content: none; /* Убираем линию под текстом */
@@ -1062,7 +1068,7 @@ button.details-btn:hover {
 
     .schedule h3 {
         font-size: 30px;
-        padding: 40px 0;
+        padding: 30px 0;
     }
 
     .about-us h3 {
