@@ -997,7 +997,7 @@ button.details-btn:hover {
         display: block;
         order: 3;
         margin-top: 40px;
-        margin-bottom: 90px;
+        margin-bottom: 200px;
         font-size: 16px;
         padding: 8px 12px;
     }
@@ -1006,7 +1006,7 @@ button.details-btn:hover {
         right: -350px;
         width: 250px;
         
-        margin-top: 480px;
+        margin-top: 560px;
         padding: 150px 20px 20px 20px;
         display: block;
         position: fixed;
